@@ -6,14 +6,16 @@ CreateUsers.create([{
   role: Faker::Job.title
   }])
 
-CreateCompanies.create([{
-  name: Faker::Company.name,
-  address: Faker::Address.city,
-  department: Faker::Name.suffix #like IV
-  number_employees: Faker::Number.number(5),
-#  industry:
-  website: Faker::Internet.url('example.com')
-  }])
+5 times do
+  CreateCompanies.create([{
+    name: Faker::Company.name,
+    address: Faker::Address.city,
+    department: Faker::Name.suffix #like IV
+    number_employees: Faker::Number.number(5),
+  #  industry:
+    website: Faker::Internet.url('example.com')
+    }])
+end
 
 CreateInternships.create([{
   orientation: Faker::Job.field,
@@ -33,9 +35,11 @@ CreateInternships.create([{
     }])
 end
 
-CreateProgrammingLanguages.create([{
-#    name: string,
-    }])
+20 times do
+  CreateProgrammingLanguages.create([{
+  #    name: string,
+      }])
+end
 
 CreateInternshipsProgrammingLanguagesJoinTable.create([{
   programming_language_id: Faker::Number.number(1),
@@ -93,9 +97,11 @@ CreateDownloads.create([{
 
   }])
 
-CreateOrientations.create({[
-  name: 
-  ]})
+10 times do
+  CreateOrientations.create({[
+    name: 
+    ]})
+end
 
 CreateFavorites.create({[
   user_id: Faker::Number.number(1),
@@ -115,9 +121,11 @@ CreateNotifications.create({[
   read: Faker::Boolean.boolean
   ]})
 
-CreateSemesters.create({[
-  semester: Faker::Number.number(10)
-  ]})
+4 times do
+  CreateSemesters.create({[
+    semester: Faker::Number.number(10)
+    ]})
+end
 
 CreateStudents.create({[
   matrikelNr: Faker::Number.number(5),
@@ -139,35 +147,47 @@ CreateFavoriteCompares.create({[
 
   ]})
 
-CreatePaymentStates.create([{
-  # name: string
-  # name_de: string
-  }])
+5 times do
+  CreatePaymentStates.create([{
+    # name: string
+    # name_de: string
+    }])
+end
 
-CreateRegistrationStates.create([{
-  # name: string
-  # name_de: string
-  }])
+2 times do
+  CreateRegistrationStates.create([{
+    # name: string -> siehe seeds.db
+    # name_de: string
+    }])
+end
 
-CreateContractStates.create([{
-  # name: string
-  # name_de: string
-  }])
+3 times do
+  CreateContractStates.create([{
+    # name: string
+    # name_de: string
+    }])
+end
 
-CreateReportStates.create([{
-  # name: string
-  # name_de: string
-  }])
+2 times do
+  CreateReportStates.create([{
+    # name: string
+    # name_de: string
+    }])
+end
 
+3 times do
 CreateInternshipStates.create([{
   # name: string
   # name_de: string
   }])
+end
 
-CreateCertificateStates.create([{
-  # name: string
-  # name_de: string
-  }])
+5 times do
+  CreateCertificateStates.create([{
+    # name: string
+    # name_de: string
+    }])
+end
 
 CreatePosts.create([{
   body: Faker::ChuckNorris.fact,
@@ -178,9 +198,11 @@ CreateEmailProcessors.create([{
 
   }])
 
-CreateReadingProf.create([{
-  name: Faker::Name.name 
-  }])
+5 times do
+  CreateReadingProf.create([{
+    name: Faker::Name.name 
+    }])
+end
 
 CreateInternshipOffers.create([{
   title: Faker::Name.title

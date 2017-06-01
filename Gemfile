@@ -55,7 +55,7 @@ gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
 
-
+gem 'faker'
 gem 'factory_girl_rails'
 
 group :development do
