@@ -33,4 +33,4 @@ RUN set -ex \
 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["bundle", "exec", "unicorn", "--port", "80"]
+#CMD ["bundle", "exec", "unicorn", "--port", "80"]
