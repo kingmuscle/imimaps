@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
     @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
 
     @companies = @internships.collect do |i| i.company end
-
-    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
+     @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       n=0
       s=""

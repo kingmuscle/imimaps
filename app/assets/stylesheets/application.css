@@ -14,8 +14,10 @@
  *= require jquery-ui
  *= require jquery-ui/slider
  *= repeat bootstrap-responsive.min
-
  */
+
+
+ 
 
  #en {
   background-image: url('images/en.gif');
@@ -34,4 +36,10 @@
 
 .red-thumb {
 	color: #b90000 !important;
+}
+#mapid { 
+	height: 500px;
+	 }
+#marker { 
+	color: 'red';
 }

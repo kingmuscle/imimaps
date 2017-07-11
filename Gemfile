@@ -108,3 +108,6 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+# Interactive Maps JS-Lib https://github.com/axyjo/leaflet-rails
+gem 'leaflet-rails', require: "leaflet-rails/view_helpers"
