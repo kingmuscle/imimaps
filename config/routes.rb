@@ -5,6 +5,19 @@ ImiMaps::Application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users
 
+    devise_scope :user do
+
+      authenticated :user do
+      root 'overview#index', as: :authenticated_root
+    end
+
+
+    #old route needs changing
+    root to: 'overview#index'
+
+
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+
     resources :internships, :only => [:edit, :show, :index, :destroy, :update]
 
     resources :companies
@@ -53,13 +66,13 @@ ImiMaps::Application.routes.draw do
 
     resources :errors, :only => [:not_found]
 
-		root to: 'sessions#new'
+		#root to: 'sessions#new'
 
     get 'signup', to: 'users#new', as: 'signup'
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
-
+end
 	end
 
   #root to: 'sessions#new'
