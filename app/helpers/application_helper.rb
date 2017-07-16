@@ -38,6 +38,7 @@ module ApplicationHelper
 
   # TBD Update gmaps4rails: this should return appropriate
   # javascript to include the map.
+
   def gmaps(hash={})
     "MAP WAS HERE"
   end

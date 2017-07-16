@@ -5,6 +5,7 @@ class OverviewController < ApplicationController
   def index
     @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
     @companies = @internships.map(&:company)
+    @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
 
     @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
       marker.infowindow ("<a href='/internships/#{company.internships.first.id}' style='font-weight:bold'>#{company.internships.first.title} at #{company.name}</a>")

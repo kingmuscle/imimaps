@@ -6,8 +6,8 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
-    @pins = L.build_markers(@companies) do |company, marker |
-    #@pins = Gmaps4rails.build_markers(@companies) do |company, marker |
+   
+    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
               company.website
@@ -29,8 +29,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-     @pins = L.build_markers(@companies) do |company, marker |
-    #@pins = Gmaps4rails.build_markers(@companies) do |company, marker |
+   
+    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
               company.website

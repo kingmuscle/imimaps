@@ -3,31 +3,42 @@
    integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
    crossorigin=""/>
 
-<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+  <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
    integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
    crossorigin=""></script>
 
-<!--<div id="mapid"></div>
-<script type="text/javascript">  
-// HTW Wilhelminenhof 52.4569311,13.5242551,17 
-var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw'
-}).addTo(mymap);
-var marker = L.marker([52.4569311, 13.5242551]).addTo(mymap);
-marker.bindPopup("<b>HTW Berlin Wilhelminenhof</b><br>some information").addListener(marker.serviceObject, 'mouseover');
-</script>
+<div id="mapid" style="height: 20vh"></div>
+    <script type="text/javascript">
 
-<!--ToDo: pins for internships  
+    var companiesInternship = JSON.parse('<%= @company_location_json %>')
+    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 3);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw'
+    }).addTo(mymap);
 
-<%= gmaps4rails(@pins) %>
--->
+    for (var i = 0; i < companiesInternship.length; i++) {
+         marker = new L.marker([companiesInternship[i][1],companiesInternship[i][2]])
+        .bindPopup(companiesInternship[i][0])
+        .addTo(mymap);
+         }
+
+         map.on('click', function() {
+    if (map.scrollWheelZoom.enabled()) {
+      map.scrollWheelZoom.disable();
+      }
+      else {
+      map.scrollWheelZoom.enable();
+      }
+    });
+
+    </script>
+
 <%= yield :scripts %>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 Gmaps.map.callback = function(){
 for(var i = 0; i < Gmaps.map.markers.length; i++){
@@ -44,7 +55,7 @@ for(var i = 0; i < Gmaps.map.markers.length; i++){
           )
         }
 }/**/
-</script>
+</script> -->
 
 <br/>
 
@@ -121,12 +132,6 @@ for(var i = 0; i < Gmaps.map.markers.length; i++){
         <button href='' alt='Next' class='nextPage'>Next</button>
         <button href='' alt='Last' class='lastPage'>Last</button>
     </div>
-
-
-
-
-
-
 <script>
 
 $('table#paginated').each(function() {

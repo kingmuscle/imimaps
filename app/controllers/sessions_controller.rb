@@ -9,12 +9,10 @@ class SessionsController < ApplicationController
     @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
 
   
-
-
   @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
 
   @companies = @internships.collect do |i| i.company end
-  @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
+   @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       n=0
       s=""
@@ -23,12 +21,12 @@ class SessionsController < ApplicationController
       @internships_comp = @internships.select {|x| x.company_id == company.id}
       @internships_comp.each do |internship|
 
-       if n==0
+      if n==0
         s+=(internship.student.first_name[0..0].capitalize+".")
       else
         s+=(" & " + internship.student.first_name[0..0].capitalize+".")
        end
-       n+=1
+        n+=1
        end
 
       if n==1
@@ -77,4 +75,4 @@ class SessionsController < ApplicationController
     redirect_to root_url, :alert =>  t("msg.logout")
   end
 
-end
+ end
