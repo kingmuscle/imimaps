@@ -16,9 +16,6 @@
  *= repeat bootstrap-responsive.min
  */
 
-
- 
-
  #en {
   background-image: url('images/en.gif');
   background-repeat:repeat-y;
