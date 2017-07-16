@@ -322,4 +322,9 @@ h2 {
   margin-bottom:15px;
 }
 
-#mapid { height: 180px; }
+#mapid { 
+  height: 20vh; 
+  width: 100vw;
+  z-index: 2
+}
+

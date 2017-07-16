@@ -2,15 +2,19 @@ class SessionsController < ApplicationController
   layout 'sessions'
 
   def new
-
     if current_user
       redirect_to overview_index_url
     end
 
-    @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
+    @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
 
-    @companies = @internships.collect do |i| i.company end
-     @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
+  
+
+
+  @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
+
+  @companies = @internships.collect do |i| i.company end
+  @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       n=0
       s=""
