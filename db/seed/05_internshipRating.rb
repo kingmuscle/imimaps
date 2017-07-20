@@ -1,11 +1,10 @@
+InternshipRating.destroy_all
 5.times do
   InternshipRating.create!(
-    appreciation: Faker::Number.number(1),
-    atmosphere: Faker::Number.number(1),
-    supervision: Faker::Number.number(1),
-    tasks: Faker::Number.number(1),
-    training_success: Faker::Number.number(1)
+    appreciation: Faker::Number.between(0, 5),
+    atmosphere: Faker::Number.between(0, 5),
+    supervision: Faker::Number.between(0, 5),
+    tasks: Faker::Number.between(0, 5),
+    training_success: Faker::Number.between(0, 5)
   )
 end
-# InternshipRating.destroy_all
-# InternshipRating.create(:appreciation => 4, :atmosphere => 4, :supervision => 4, :tasks => 4, :training_success => 4)
