@@ -1,4 +1,6 @@
 # encoding: UTF-8
+Dir[File.join(Rails.root, 'db', 'seed', '*.rb')].sort.each { |seed| load seed }
+
 puts "seeding database"
 ProgrammingLanguage.where(name: "Java").first_or_create
 ProgrammingLanguage.where(name: "C++").first_or_create
@@ -136,8 +138,8 @@ n=1
   r_employees = rand(500)
   r_phone = rand(8999999)+1000000
 
-	Company.where(street: "a", zip: "1", name: "Company#{n}", number_employees: r_employees, city: hash[countries[r]],
-       country: countries[r], phone: r_phone.to_s, blacklisted: false, import_id: n, website: "www.google.com").first_or_create!
+	# Company.where(street: "a", zip: "1", name: "Company#{n}", number_employees: r_employees, city: hash[countries[r]],
+ #       country: countries[r], phone: r_phone.to_s, blacklisted: false, import_id: n, website: "www.google.com").first_or_create!
 
 	semester = Semester.find(rand(Semester.count)+1)
   reading_prof = ReadingProf.find(rand(ReadingProf.count)+1)
