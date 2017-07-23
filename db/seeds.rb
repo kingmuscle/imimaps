@@ -56,18 +56,6 @@ ProgrammingLanguage.where(name: "LabVIEW").first_or_create
 ProgrammingLanguage.where(name: "Ladder Logic").first_or_create
 ProgrammingLanguage.where(name: "JScript.NET").first_or_create
 
-Orientation.where(name: "Game", id:1).first_or_create
-Orientation.where(name: "Web", id:2).first_or_create
-Orientation.where(name: "Mobile", id:3).first_or_create
-Orientation.where(name: "Software", id:4).first_or_create
-Orientation.where(name: "Marketing", id:5).first_or_create
-Orientation.where(name: "Design", id:6).first_or_create
-Orientation.where(name: "Product Management", id:7).first_or_create
-Orientation.where(name: "Graphics/3D", id: 8).first_or_create
-Orientation.where(name: "Video", id: 9).first_or_create
-Orientation.where(name: "Concept", id: 10).first_or_create
-Orientation.where(name: "Administration/Support", id: 11).first_or_create
-
 PaymentState.where(name: "uncharted", name_de: "unbekannt").first_or_create
 PaymentState.where(name: "cash benefit", name_de: "bezahlt").first_or_create
 PaymentState.where(name: "noncash benefit", name_de: "geldlos vergütet").first_or_create
@@ -137,9 +125,6 @@ n=1
 
   r_employees = rand(500)
   r_phone = rand(8999999)+1000000
-
-	# Company.where(street: "a", zip: "1", name: "Company#{n}", number_employees: r_employees, city: hash[countries[r]],
- #       country: countries[r], phone: r_phone.to_s, blacklisted: false, import_id: n, website: "www.google.com").first_or_create!
 
 	semester = Semester.find(rand(Semester.count)+1)
   reading_prof = ReadingProf.find(rand(ReadingProf.count)+1)

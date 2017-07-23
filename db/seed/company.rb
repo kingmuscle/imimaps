@@ -1,3 +1,4 @@
+Company.destroy_all
 10.times do
   Company.create!(
     street: Faker::Address.street_address,
